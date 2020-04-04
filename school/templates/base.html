@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %} | School Demo Project - Jeremias Enriquez</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    {% include 'components/css.html' %}
+    {% block custom_css %}{% endblock %}
+</head>
+<body>
+    {% include 'components/heading.html' %}
+    <style>.errorlist{color:red;}</style>
+    <main role="main">
+        <div class="container mt-5 mb-5">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    {% include 'components/footer.html' %}
+{% include 'components/js.html' %}
+{% block sutom_js %}{% endblock %}
+</body>
+</html>

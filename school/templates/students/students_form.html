@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+    {% if 'edit' in request.path %}Edit {% else %}Add {% endif %}Student
+{% endblock %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <h3 class="text-center">
+        {% if 'edit' in request.path %}Edit {% else %}Add {% endif %}
+        Student
+    </h3>
+    <form action="" class="mt-3" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="form-group">
+                    {% render_field form.name class="form-control" placeholder="Student name" %}
+                </div>
+
+                <div class="form-group">
+                    {% render_field form.last_name class="form-control" placeholder="Student last name" %}
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    {% render_field form.gender class="form-control" %}
+                </div>
+
+                <div class="form-group">
+                    {% render_field form.birthdate class="form-control" placeholder="Student birthdate" type="date" %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 offset-2">
+                <a href="{% url 'students:list' %}" type="button" class="btn btn-block btn-danger">Cancel</a>
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-block btn-success">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock  %}

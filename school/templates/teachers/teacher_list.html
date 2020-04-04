@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Teachers{% endblock  %}
+
+{% block content %}
+    <div class="row pb-3">
+        <div class="col-6">
+            <h4>Teachers</h4>
+        </div>
+        <div class="col-6">
+            <a href="{% url 'teachers:add' %}" class="btn btn-small btn-primary float-right">
+                <span class="material-icons">person_add</span>
+                Add Teacher
+            </a>
+        </div>
+    </div>
+    
+    {% include 'components/confirmation.html' %}
+
+    <div class="container fluid">
+        <table id="table" class="table dt-responsive table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td class="text-center">#</td>
+                    <td class="text-center">Full name</td>
+                    <td class="text-center">Gender</td>
+                    <td class="text-center">Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in teachers %}
+                    <tr>
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td>{{ teacher.name }} {{ teacher.last_name }}</td>
+                        <td>{{ teacher.get_gender_display }}</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a href="{% url 'teachers:delete' teacher.pk %}" type="button" class="btn btn-danger">
+                                    <span class="material-icons">
+                                        clear
+                                    </span>
+                                </a>
+                                <a href="{% url 'teachers:edit' teacher.pk %}" type="button" class="btn btn-warning">
+                                    <span class="material-icons">
+                                        create
+                                    </span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock  %}

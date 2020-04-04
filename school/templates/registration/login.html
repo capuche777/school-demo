@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Inicio / Login{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 my-auto">
+        <h1>CRUD Demo Project</h1>
+        <p>This project has been developed as a demo project, it works with Python/Django, Bootstrap and a little JavaScript</p>
+        <p>Do whatever you want to test it, <strong>all the data will be restored once a day at 00:00:000 UTC</strong></p>
+        <h4>You can:</h4>
+        <ul>
+            <li>Create Students and Teachers</li>
+            <li>Create Grades</li>
+            <li>Assign a teacher to grades</li>
+            <li>Assign students to grades with section</li>
+            <li>Edit everything</li>
+            <li>Delete everything</li>
+        </ul>
+        <h4>Libraries and Plugins:</h4>
+        <ul>
+            <li>jQuery</li>
+            <li>DataTables</li>
+        </ul>
+    </div>
+    <div class="col-md-6 my-auto">
+        <form action="" method="post">{% csrf_token %}
+            <h3 class="mb-4">Login</h3>
+            {% if form.non_field_errors %}
+                <p style="color:red">Username and Password doesn't match, Try Again.</p>
+            {% endif %}
+            <p>
+                <input type="text" name="username" autofocus maxlength="254" required id="id_username" class="form-control" placeholder="demo"/>
+            </p>
+            <p>
+                <input type="password" name="password" required id="id_password" class="form-control" placeholder="demo"/>
+            </p>
+            <p>
+                <input type="submit" class="btn btn-primary btn-block" value="Log In">
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

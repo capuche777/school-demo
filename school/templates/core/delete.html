@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Borrar {{ title }}{% endblock %}
+{% block content %}
+<div class="row mt-3">
+  <div class="col-md-9 mx-auto">
+    <div>
+        <form action="" method="post">{% csrf_token %}
+            <p>Are you sure you want to remove permanently <b>"{{ object }}"</b>?</p>
+            <input type="submit" class="btn btn-primary btn-block" value="Yes, Remove" />
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

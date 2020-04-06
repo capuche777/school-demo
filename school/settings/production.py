@@ -10,8 +10,10 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DATABASE'),
+        'USER': config('DBUSER'),
+        'PASSWORD': config('DBPASSWORD'),
         'OPTIONS': {
-            'read_default_file': 'etc/mysql/demo1-mysql.cnf',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
     }
